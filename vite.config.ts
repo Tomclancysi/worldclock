@@ -22,7 +22,8 @@ export default defineConfig({
     UnoCSS({ // unocss可以让你能够在标签上像属性一样定义样式，不用写到style里面一大堆
       shortcuts: { // 可以自定义一些缩写
         'border-base': 'border-gray/20 dark:border-gray/15', // 
-        'bg-base': 'bg-white dark:bg-truegray-900' //设置默认back
+        'bg-base': 'bg-white dark:bg-truegray-900', //设置默认back
+        'icon-btn': 'op50 hover:op100' // 按钮的图标，放到上面时高亮
       },
       presets: [
         presetUno(),// 这是干啥preset

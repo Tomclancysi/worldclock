@@ -28,7 +28,6 @@ function add(t: Timezone){
 }
 
 function onKeyDown(e: KeyboardEvent){
-  console.log({e})
   if(e.key === "ArrowDown"){
     index.value = (index.value + 1) % searchResult.value.length
   }
@@ -36,9 +35,8 @@ function onKeyDown(e: KeyboardEvent){
     index.value = (index.value - 1 + searchResult.value.length) % searchResult.value.length
   }
   else if(e.key === "Enter"){
-    // add(searchResult.value[index.value])
+    add(searchResult.value[index.value].item)
   }
-  console.log(index.value)
 }
 
 </script>
@@ -52,7 +50,7 @@ function onKeyDown(e: KeyboardEvent){
     @keydown="onKeyDown" />
     <div v-show="input.length > 0" 
       absolute top-full  
-      left-0 right-0  max-h-100 overflow-auto bg-base
+      left-0 right-0  max-h-100 overflow-auto bg-base z-24
       >
       <div v-for="item, idx of searchResult" 
         :key="item.refIndex" 
