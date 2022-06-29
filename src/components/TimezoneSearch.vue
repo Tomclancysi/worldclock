@@ -21,22 +21,50 @@ function addToTimezone(zone: Timezone){
   console.log(zones.value)
 }
 
+function add(t: Timezone){
+  addToTimezone(t)
+  index.value = 0
+  input.value = ''
+}
+
+function onKeyDown(e: KeyboardEvent){
+  console.log({e})
+  if(e.key === "ArrowDown"){
+    index.value = (index.value + 1) % searchResult.value.length
+  }
+  else if(e.key === "ArrowUp"){
+    index.value = (index.value - 1 + searchResult.value.length) % searchResult.value.length
+  }
+  else if(e.key === "Enter"){
+    // add(searchResult.value[index.value])
+  }
+  console.log(index.value)
+}
+
 </script>
 
 <template>
-  <div>
+  <div relative>
     <!-- 双向绑定input，为啥要声明ref呢 -->
-    <input v-model="input" type="text"/>
-    <div>
-      <button
-       v-for="i of searchResult" 
-       :key="i.refIndex"
-       @click="addToTimezone(i.item)"
-       flex gap2>
-        <!-- 这个attribute控制css 格式太强了！少写好多 -->
-        <div font-mono w-10 text-right>{{i.item.offset}}</div>
-        <div font-mono>{{i.item.name}}</div>
-      </button>
+    <!-- 输入框css那么一设置 质感立马上去了 -->
+    <input v-model="input" type="text" placeholder="Search zone..." 
+    p="x3 y2" border="~ base rounded" bg-transparent w-full box-border
+    @keydown="onKeyDown" />
+    <div v-show="input.length > 0" 
+      absolute top-full  
+      left-0 right-0  max-h-100 overflow-auto bg-base
+      >
+      <div v-for="item, idx of searchResult" 
+        :key="item.refIndex" 
+        >
+        <TimezoneItem 
+          :class="idx === index ? 'bg-gray:10' : ''" :timezone="item.item" 
+          @click="add(item.item)"
+          hover:bg-gray:10
+           />
+      </div>
+
+      
     </div>
   </div>
 

@@ -1,11 +1,11 @@
-<script lang="ts">
+<script lang="ts" setup>
 // const props = defineProps<{
 //     modelValue: boolean
 // }>()
 </script>
 <template>
 
-    <dir border="b gray/15" p2>
+    <div border="b base" p4>
         <TimezoneSearch/>
-    </dir>
+    </div>
 </template>

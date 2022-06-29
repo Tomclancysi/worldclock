@@ -1,21 +1,24 @@
 <script setup lang="ts">
-import zones from './composoable/state'
+
 </script>
 
 <template>
-<div border="~ gray" m2 g2>
-  <ActionBar/>
-  <pre>{{zones}}</pre>
+<div border="~ base" m2 g2 bg-gray:15 h-screen>
+  <div text-sans >
+    <NavBar/>
+    <div border="~ base rounded" m2 bg-white dark:bg-truegray-900 shadow>
+      <ActionBar/>
+      <TimeSchedular/>
+    </div>
+  </div>
+  
   <!-- <TimezoneSearch/> -->
 </div>
 </template>
 
 <style>
-  html {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: x-large;
-    background: #222;
-    color: white;
+  .dark {
     color-scheme: dark;
+    color: white;
   }
 </style>
