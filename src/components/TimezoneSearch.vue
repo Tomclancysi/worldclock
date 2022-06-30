@@ -48,7 +48,7 @@ function onKeyDown(e: KeyboardEvent){
     <input v-model="input" type="text" placeholder="Search zone..." 
     p="x3 y2" border="~ base rounded" bg-transparent w-full box-border
     @keydown="onKeyDown" />
-    <div v-show="input.length > 0" 
+    <div v-show="input" 
       absolute top-full  
       left-0 right-0  max-h-100 overflow-auto bg-base z-24
       >
